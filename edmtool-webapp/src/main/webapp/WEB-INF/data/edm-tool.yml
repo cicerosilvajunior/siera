@@ -1,0 +1,17 @@
+version: 0.1.1
+released: 2017-09-27
+
+# Dataset parameters - Data Mining Module
+useCSV: true
+
+classificationDataDir: edm-tool/data/simulacoes/classificacao/
+
+trainningDataFile: repositorio_treinamento_alunos_unidini_v2.2.arff
+
+testDataFile: repositorio_testes_alunos_unidini_v2.2.csv
+
+
+# Dataset parameters - BKT Module
+bktDataDir: edm-tool/data/simulacoes/bkt/
+
+bktDataFile: POO-Atividade-Avaliativa-Final.csv

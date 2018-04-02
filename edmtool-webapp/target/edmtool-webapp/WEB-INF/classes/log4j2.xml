@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<!-- <Appenders> -->
+
+	<!-- </Appenders> -->
+	<!-- <Loggers> -->
+	<!-- <Root level="trace"> -->
+	<!-- <AppenderRef ref="Console"/> -->
+	<!-- </Root> -->
+	<!-- </Loggers> -->
+
+	<Appenders>
+		<File name="File" fileName="logs/edm-tool.log" >
+			<PatternLayout>
+<!-- 				<Pattern>%d %p %c{1.} %C [%t] %m%n</Pattern> -->
+				<PatternLayout pattern="%d %p %c{1.} [%t] %m%n" />
+			</PatternLayout>
+		</File>
+		<Console name="Console">
+			<PatternLayout pattern="%d %p %c{1.} %C [%t] %m%n" />
+		</Console>
+		
+<!-- 		<RollingFile name="RollingFile" fileName="logs/edm-tool.log" -->
+<!-- 				 filePattern="logs/$${date:yyyy-MM}/${name}-%d{yyyy-MM-dd}-%i.log"> -->
+<!-- 			<PatternLayout> -->
+<!-- 				<PatternLayout pattern="%d %p %c{1.} %C [%t] %m%n" /> -->
+<!-- 			</PatternLayout> -->
+<!-- 			<Policies> -->
+<!-- 				<TimeBasedTriggeringPolicy />Rotated everyday -->
+<!-- 				<SizeBasedTriggeringPolicy size="100 MB"/> Or every 100 MB -->
+<!-- 			</Policies> -->
+<!-- 		</RollingFile> -->
+		
+		<Async name="Async">
+			<AppenderRef ref="File" />
+		</Async>
+	</Appenders>
+	<Loggers>
+		<Root level="trace">
+			<AppenderRef ref="Async" />
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>

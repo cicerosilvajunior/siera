@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://butterfaces.org/components"
+	template="/WEB-INF/templates/default.xhtml"
+	xmlns:rich="http://richfaces.org/rich">
+	<h:head>
+		<link
+			href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+			rel="stylesheet" />
+	</h:head>
+	<ui:define name="content">
+		<div class="jumbotron">
+			<div class="container">
+					<div class="page-header">
+						<h1>
+							<small>Análise de Desempenho de Alunos</small>
+						</h1>
+					</div>
+					<div class="butter-component-info">
+					<h:form id="reg">
+						<b:section id="sectionModelo"
+							label="Parâmetros do Processo de Análise do Desempenho"
+							badgeText="" rendered="true">
+						</b:section>
+
+						<b:text id="userId" label="Identificação do Aluno:"
+							hideLabel="false" value="#{desempenhoAluno.userId}"
+							placeholder="Enter text..." type="null" pattern="null" min="null"
+							max="null" styleClass="null" readonly="false" required="true"
+							disabled="false" autoFocus="false" rendered="true" />
+
+						<b:text id="date" label="Data:" hideLabel="false"
+							value="#{desempenhoAluno.date}" placeholder="Enter text..."
+							type="null" pattern="null" min="null" max="null"
+							styleClass="null" readonly="false" required="true"
+							disabled="false" autoFocus="false" rendered="true">
+							<f:convertDateTime pattern="dd/mm/yyyy" />
+						</b:text>
+
+						<b:text id="distributionProbability"
+							label="Distribuição de Probabilidades:" hideLabel="false"
+							value="#{desempenhoAluno.distributionProbability}"
+							placeholder="Enter text..." type="null" pattern="null" min="null"
+							max="null" styleClass="null" readonly="false" required="true"
+							disabled="false" autoFocus="false" rendered="true" />
+
+						<b:text id="knowledgeDiagnostic"
+							label="Diagnóstico de Conhecimento:" hideLabel="false"
+							value="#{desempenhoAluno.knowledgeDiagnostic}"
+							placeholder="Enter text..." type="null" pattern="null" min="null"
+							max="null" styleClass="null" readonly="false" required="true"
+							disabled="false" autoFocus="false" rendered="true" />
+
+						<b:text id="lesson" label="Lição:" hideLabel="false"
+							value="#{desempenhoAluno.lesson}" placeholder="Enter text..."
+							type="null" pattern="null" min="null" max="null"
+							styleClass="null" readonly="false" required="true"
+							disabled="false" autoFocus="false" rendered="true" />
+
+						<b:text id="skill" label="Skill:" hideLabel="false"
+							value="#{desempenhoAluno.skill}" placeholder="Enter text..."
+							type="null" pattern="null" min="null" max="null"
+							styleClass="null" readonly="false" required="true"
+							disabled="false" autoFocus="false" rendered="true" />
+
+						<div class="btn-group">
+							<b:commandLink id="btnSaveClassificacao" value="Salvar"
+								glyphicon="glyphicon glyphicon-ok-sign"
+								styleClass="btn btn-success" ajaxDisableLinkOnRequest="true"
+								ajaxShowWaitingDotsOnRequest="true"
+								ajaxHideGlyphiconOnRequest="false"
+								ajaxDisableRenderRegionsOnRequest="true"
+								ajaxProcessingGlyphicon="fa fa-refresh fa-spin"
+								action="#{desempenhoController.register()}" rendered="true">
+							</b:commandLink>
+						</div>
+
+						<b:messages globalOnly="false" showDetail="false" rendered="true" />
+						<BR />
+					</h:form>						
+					</div>
+				<br/>
+							<div class="btn-group" align="left">
+				<h:form id="performanceForm">
+						<b:commandLink id="btnAnaliseDesempenho"
+							value="Analisar desempenho"
+							glyphicon="glyphicon glyphicon-education"
+							styleClass="btn btn-info" ajaxDisableLinkOnRequest="true"
+							ajaxShowWaitingDotsOnRequest="true"
+							ajaxHideGlyphiconOnRequest="false"
+							ajaxDisableRenderRegionsOnRequest="true"
+							ajaxProcessingGlyphicon="fa fa-refresh fa-spin"
+							action="#{analiseDesempenhoController.evaluateStudentPerformance()}"
+							rendered="true">
+						</b:commandLink>
+				</h:form>
+				
+				<br/>
+				
+			</div>
+				
+			</div>
+
+			<div class="container">
+				<div class="butter-component-info">
+					<h:form id="details">
+						<b:section id="headerTabelaAnaliseDesempenho" label="Análises realizadas">
+							<h:panelGroup id="pnlTabelaAnaliseDesempenho" layout="block">
+
+								<b:table id="tabelaAnaliseDesempenho" var="_analiseDesempenho"
+									value="#{listaAnaliseDesempenho}" tableBordered="false"
+									tableCondensed="false" tableStriped="true"
+									ajaxDisableRenderRegionsOnRequest="false"
+									rendered="#{not empty listaAnaliseDesempenho}">
+
+									<b:column id="detailsColumn" label="">
+										<b:commandLink id="comandLinkClassificacao" value=""
+											glyphicon="glyphicon glyphicon-zoom-in"
+											styleClass="btn btn-info btn-xs"
+											ajaxDisableLinkOnRequest="true"
+											ajaxShowWaitingDotsOnRequest="true"
+											ajaxHideGlyphiconOnRequest="false"
+											ajaxDisableRenderRegionsOnRequest="true"
+											ajaxProcessingGlyphicon="fa fa-refresh fa-spin"
+											action="detalhesanalisedesempenho.jsf" rendered="true">
+
+											<f:param name="id" value="#{_analiseDesempenho.id}" />
+										</b:commandLink>
+									</b:column>
+									<b:column id="idColumn" label="#">
+            #{_analiseDesempenho.id}
+                
+            </b:column>
+
+									<b:column id="dateColumn" label="Data">
+                #{_analiseDesempenho.date}
+            </b:column>
+
+									<b:column id="datasetColumn" label="Dataset">
+                #{_analiseDesempenho.dataset}
+            </b:column>
+
+									<b:column id="algorithmColumn" label="Algoritmo">
+                #{_analiseDesempenho.algorithm}
+            </b:column>
+
+									<b:column id="attributesColumn" label="Total de Instâncias">
+                #{_analiseDesempenho.instancesTotal}
+            </b:column>
+								</b:table>
+							</h:panelGroup>
+						</b:section>
+
+
+						<b:section id="headerTabela" label="Alunos analisados">
+							<h:panelGroup id="pnlTabelaDesempenho" layout="block">
+
+								<b:table id="tableStudentPerformance" var="_studentPerformance"
+									value="#{listaDesempenho}" tableBordered="false"
+									tableCondensed="false" tableStriped="true"
+									ajaxDisableRenderRegionsOnRequest="false"
+									rendered="#{not empty listaDesempenho}">
+
+									<b:column id="idColumn" label="#">
+            #{_studentPerformance.userId}
+                
+            </b:column>
+
+									<b:column id="dateColumn" label="Data">
+                #{_studentPerformance.date}
+            </b:column>
+
+									<b:column id="lessonColumn" label="Lição">
+                #{_studentPerformance.lesson}
+            </b:column>
+
+									<b:column id="skillColumn" label="Skill">
+                #{_studentPerformance.skill}
+            </b:column>
+
+									<b:column id="attributesColumn" label="Parâmetros de Avaliação">
+                #{_studentPerformance.bktProbString}
+            </b:column>
+
+									<b:column id="accuracyColumn" label="Diagnóstico">
+                #{_studentPerformance.knowledgeDiagnostic}
+            </b:column>
+								</b:table>
+							</h:panelGroup>
+						</b:section>
+					</h:form>
+				</div>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://butterfaces.org/components"
+	template="/WEB-INF/templates/default.xhtml"
+	xmlns:rich="http://richfaces.org/rich">
+	<ui:define name="content">
+	<h:head>
+		<link
+			href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+			rel="stylesheet" />
+			
+			<link
+				href="resources/css/edmtool.css"
+				rel="stylesheet" />	
+	</h:head>
+	
+	<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#"></a>
+  </div>
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.jsf">Início</a></li>
+      <li><a href="classificacao.jsf">Classificação</a></li>
+      <li><a href="analisedesempenho.jsf">Avaliação de Conhecimento</a></li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
+		<h:form>
+			<div class="container">
+			<br/>
+				<div class="page-header">
+					<h1>
+						<small>Processo de Avaliação de Conhecimento</small>
+					</h1>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">Avaliação de Conhecimento Realizada</div>
+					<div class="panel-body">
+
+						<div class="form-group row">
+							<label class="control-label col-sm-3 col-form-label">Processo de Avaliação:</label>
+							<div class="controls col-sm-3">
+								<span class="control-label">#{analiseDesempenhoById.id}</span>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="control-label col-sm-3 col-form-label">Data:</label>
+							<div class="controls col-sm-3">
+								<span class="control-label"><h:outputText class="control-label"
+									value="#{analiseDesempenhoById.date}">
+									<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"
+										timeZone="America/Sao_Paulo" />
+								</h:outputText></span>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="control-label col-sm-3 col-form-label">Algoritmo:</label>
+							<div class="controls col-sm-3">
+								<span class="control-label">#{analiseDesempenhoById.algorithm}</span>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="control-label col-sm-3 col-form-label">Dados utilizados:</label>
+							<div class="controls col-sm-3">
+								<span class="control-label">#{analiseDesempenhoById.dataset}</span>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="control-label col-sm-3 col-form-label">Total de alunos:</label>
+							<div class="controls col-sm-3">
+								<span class="control-label">#{analiseDesempenhoById.instancesTotal}</span>
+							</div>
+						</div>
+
+						<div class="panel panel-default">
+							<!-- Default panel contents -->
+							<div class="panel-heading">Alunos analisados</div>
+							<b:table id="accuracyByClassesTable" var="studentPerformance"
+								value="#{analiseDesempenhoById.studentPerformanceList}"
+								tableBordered="false" tableCondensed="true" tableStriped="true"
+								ajaxDisableRenderRegionsOnRequest="false" rendered="true"
+								styleClass="table" rowClass="table">
+
+								<b:column id="column1" label="Identificação">
+                #{studentPerformance.userId}
+            </b:column>
+
+								<b:column id="column2" label="Atividade avaliativa">
+                #{studentPerformance.lesson}
+            </b:column>
+
+								<b:column id="column3" label="Assunto">
+                #{studentPerformance.skill}
+            </b:column>
+            <b:column id="column6" label="Respostas" styleClass="col-md-1">
+             <ui:repeat var="o" value="#{studentPerformance.studentAnswersList}" varStatus="status">
+										<span class="#{o == 0 ? 'glyphicon glyphicon-remove text-danger' : 'glyphicon glyphicon-ok text-success'}"></span>
+			 </ui:repeat>
+            </b:column>
+								<b:column id="column4" label="Parâmetros da avaliação" class="col-sm-3">
+								<ui:repeat var="bktParam" value="#{studentPerformance.bktParamsMap}" varStatus="status">
+									<div>#{bktParam}</div>						
+			 </ui:repeat>
+                
+            </b:column>
+
+								<b:column id="column5" label="Diagnóstico">
+                #{studentPerformance.knowledgeDiagnostic}
+            </b:column>
+							</b:table>
+						</div>
+
+						<div align="right">
+				
+											</div>
+					</div>
+				</div>
+				
+										<div align="right">
+						<h:outputLink styleClass="btn btn-info" value="analisedesempenho.jsf"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</h:outputLink>
+						</div>
+				
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

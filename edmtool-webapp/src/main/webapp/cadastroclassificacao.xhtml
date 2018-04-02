@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://butterfaces.org/components"
+	template="/WEB-INF/templates/default.xhtml"
+	xmlns:rich="http://richfaces.org/rich">
+	<div class="content">
+		<h:head>
+			<link
+				href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+				rel="stylesheet" />
+		</h:head>
+
+		<ui:define name="content">
+
+			<h:form id="reg">
+				<div class="container">
+					<div class="butter-component-info">
+						<b:section id="sectionModelo" label="Cadastrar Classificação"
+							badgeText="" rendered="true">
+						</b:section>
+
+						<b:text id="scheme" label="Algoritmo:" hideLabel="false"
+							value="#{newClassificacao.scheme}" placeholder="Enter text..."
+							type="null" pattern="null" min="null" max="null"
+							styleClass="null" readonly="false" required="false"
+							disabled="false" autoFocus="false" rendered="true" />
+
+						<b:text id="relation" label="Dados utilizados:" hideLabel="false"
+							value="#{newClassificacao.relation}" placeholder="Enter text..."
+							type="null" pattern="null" min="null" max="null"
+							styleClass="null" readonly="false" required="false"
+							disabled="false" autoFocus="false" rendered="true" />
+
+						<b:text id="instancesTotal" label="Total de instâncias:"
+							hideLabel="false" value="#{newClassificacao.instancesTotal}"
+							placeholder="Enter text..." type="null" pattern="null" min="null"
+							max="null" styleClass="null" readonly="false" required="false"
+							disabled="false" autoFocus="false" rendered="true" />
+
+						<b:text id="attributesTotal" label="Total de atributos:"
+							hideLabel="false" value="#{newClassificacao.attributesTotal}"
+							placeholder="Enter text..." type="null" pattern="null" min="null"
+							max="null" styleClass="null" readonly="false" required="false"
+							disabled="false" autoFocus="false" rendered="true" />
+
+						<b:text id="attributesList" label="Atributos:" hideLabel="false"
+							value="#{newClassificacao.attributesList}"
+							placeholder="Enter text..." type="null" pattern="null" min="null"
+							max="null" styleClass="null" readonly="false" required="false"
+							disabled="false" autoFocus="false" rendered="true" />
+
+						<b:text id="testMode" label="Modo de Teste:" hideLabel="false"
+							value="#{newClassificacao.testMode}" placeholder="Enter text..."
+							type="null" pattern="null" min="null" max="null"
+							styleClass="null" readonly="false" required="false"
+							disabled="false" autoFocus="false" rendered="true" />
+
+						<b:text id="data" label="Data:" hideLabel="false"
+							value="#{newClassificacao.date}" placeholder="Enter text..."
+							type="null" pattern="null" min="null" max="null"
+							styleClass="null" readonly="false" required="false"
+							disabled="false" autoFocus="false" rendered="true">
+							<f:convertDateTime pattern="dd/mm/yyyy" />
+						</b:text>
+						<p>
+							<h:panelGrid columns="2">
+								<h:commandButton id="register"
+									action="#{classificacaoController.register()}" value="Register"
+									styleClass="register" />
+								<h:messages styleClass="messages" errorClass="invalid"
+									infoClass="valid" warnClass="warning" globalOnly="true" />
+							</h:panelGrid>
+						</p>
+
+						<b:section id="headerTabela" label="Classificações realizadas:">
+							<h:panelGroup id="clicks" layout="block">
+
+								<b:table id="tableClassifications" var="_classificacao"
+									value="#{classificacoes}" tableBordered="false"
+									tableCondensed="false" tableStriped="true"
+									ajaxDisableRenderRegionsOnRequest="false"
+									rendered="#{not empty classificacoes}">
+
+									<b:column id="detailsColumn" label="">
+										<b:commandLink id="comandLinkClassificacao" value=""
+											glyphicon="glyphicon glyphicon-zoom-in"
+											styleClass="btn btn-info btn-xs"
+											ajaxDisableLinkOnRequest="true"
+											ajaxShowWaitingDotsOnRequest="true"
+											ajaxHideGlyphiconOnRequest="false"
+											ajaxDisableRenderRegionsOnRequest="true"
+											ajaxProcessingGlyphicon="fa fa-refresh fa-spin"
+											action="modelo2.jsf" rendered="true">
+
+											<f:param name="id" value="#{_classificacao.id}" />
+										</b:commandLink>
+									</b:column>
+									<b:column id="idColumn" label="#">
+            #{_classificacao.id}
+                
+            </b:column>
+
+									<b:column id="algorithmColumn" label="Algoritmo">
+                #{_classificacao.scheme}
+            </b:column>
+
+									<b:column id="relationColumn" label="Dados utilizados">
+                #{_classificacao.scheme}
+            </b:column>
+
+									<b:column id="instancesColumn" label="Quantidade de instâncias">
+                #{_classificacao.instancesTotal}
+            </b:column>
+
+									<b:column id="attributesColumn" label="Quantidade de atributos">
+                #{_classificacao.attributesTotal}
+            </b:column>
+
+									<b:column id="accuracyColumn" label="Acuracidade">
+                #{_classificacao.accuracy}
+            </b:column>
+									<b:column id="correctColumn"
+										label="Instâncias classificadas corretamente">
+                #{_classificacao.modelo.correctlyClassified}
+            </b:column>
+									<b:column id="incorrectColumn"
+										label="Instâncias classificadas incorretamente">
+                #{_classificacao.modelo.incorrectlyClassified}
+            </b:column>
+									<b:column id="kappaColumn" label="Kappa">
+                #{_classificacao.modelo.kappaStatistic}
+            </b:column>
+								</b:table>
+							</h:panelGroup>
+						</b:section>
+					</div>
+				</div>
+			</h:form>
+		</ui:define>
+	</div>
+</ui:composition>

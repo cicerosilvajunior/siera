@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://butterfaces.org/components"
+	template="/WEB-INF/templates/default.xhtml"
+	xmlns:rich="http://richfaces.org/rich">
+	<ui:define name="content">
+		<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<style type="text/css">
+.navbar-custom {
+	background-color: #337ab7;
+	color: #2e6da4;
+	border-radius: 0;
+}
+
+.navbar-custom .navbar-nav>li>a {
+	color: #fff;
+}
+
+.navbar-custom .navbar-nav>.active>a {
+	color: #ffffff;
+	background-color: transparent;
+}
+
+.navbar-custom .navbar-nav>li>a:hover, .navbar-custom .navbar-nav>li>a:focus,
+	.navbar-custom .navbar-nav>.active>a:hover, .navbar-custom .navbar-nav>.active>a:focus,
+	.navbar-custom .navbar-nav>.open>a {
+	text-decoration: none;
+	background-color: #2e6da4;
+}
+
+.navbar-custom .navbar-brand {
+	color: #eeeeee;
+}
+
+.navbar-custom .navbar-toggle {
+	background-color: #eeeeee;
+}
+
+.navbar-custom .icon-bar {
+	background-color: #33aa33;
+}
+
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+.sidebar-nav {
+	padding: 9px 0;
+}
+</style>
+<link href="fluid_files/bootstrap-responsive.css" rel="stylesheet" />
+
+<link rel="shortcut icon"
+	href="http://globocom.github.io/bootstrap/assets/ico/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="http://globocom.github.io/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="http://globocom.github.io/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="http://globocom.github.io/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png" />
+<link rel="apple-touch-icon-precomposed"
+	href="http://globocom.github.io/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png" />
+
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+	rel="stylesheet" />
+		</head>
+
+		<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#"></a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.jsf">Início</a></li>
+						<li><a href="classificacao.jsf">Classificação</a></li>
+						<li><a href="analisedesempenho.jsf">Avaliação de
+								Conhecimento</a></li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="well well-lg">
+					<div class="hero-unit">
+						<h2>Bem-vindo(a)!</h2>
+						<p>Esta ferramenta tem como objetivo demonstrar a viabilidade
+							de uso de técnicas de mineração de dados e análise de desempenho
+							para apoiar na identificação de alunos em risco de evasão ou com
+							necessidade de reforço da aprendizagem.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

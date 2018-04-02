@@ -1,0 +1,24 @@
+version: 1.0
+released: 2017-08-15
+
+# Dataset parameters - Data Mining Module
+useCSV: true
+#dataDir: data/
+classificationDataDir: edm-tool/data/simulacoes/V2.2/
+#dataDir: data/simulacoes/bkt/
+#trainningDataFile: dados_pessoais_train.csv
+#trainningDataFile: repositorio_treinamento_alunos_sim02_v2.arff # // 100 % probabilidade
+trainningDataFile: repositorio_treinamento_alunos_unidfim_v2.2.arff
+
+testDataFile: repositorio_testes_alunos_unidfim_v2.2.csv
+
+#studentInstanceFile: dados_pessoais_identified_test.csv
+#studentInstanceFile: repositorio_testes_alunos_sim02_v2.csv #// 100 % probabilidade
+studentInstanceFile: repositorio_testes_alunos_unidfim_v2.2.csv
+
+# Dataset parameters - BKT Module
+bktDataDir: edm-tool/data/simulacoes/bkt/
+
+bktDataFile: POO-Atividade-Avaliativa-2.csv
+
+bktOutDataFile: student_output_bkt-bf.csv
