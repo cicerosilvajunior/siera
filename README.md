@@ -2,7 +2,7 @@ EDM Tool: The use of classification and knowledge modeling to identify students 
 ========================
 Author: Cicero Silva Jr
 Summary: A web application that incorporates education data mining and student knowledge tracing techniques
-Source: <git@bitbucket.org:cicerosilvajr/edm-web.git/>
+Source: <https://github.com/cicerosilvajunior/siera.git>
 
 What is EDM Tool?
 -----------
